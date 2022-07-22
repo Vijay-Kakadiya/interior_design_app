@@ -1,0 +1,1560 @@
+@import "_variables.scss";
+@import "_font.scss";
+@import "_mixin.scss";
+@import "_themeColors.scss";
+@import "_space.scss";
+
+/*==========Common CSS ==========*/
+
+:root {
+    --container_space: clamp(30px, 6vw, 120px);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+// html,
+// body {
+//     overflow-x: hidden;
+// }
+
+html {
+    scroll-behavior: smooth;
+}
+
+body::-webkit-scrollbar {
+    width: 0;
+}
+
+body {
+    font-family: $body_font;
+    color: $text_color;
+    background-color: $body_bg;
+    background-image: url(../images/noise.png);
+    text-rendering: optimizeSpeed;
+}
+
+button,
+input,
+select,
+optgroup,
+textarea {
+    color: $text_color;
+    font-size: 16px;
+    line-height: 26px;
+}
+
+img {
+    max-width: 100%;
+}
+
+section,
+footer {
+    position: relative;
+}
+
+.sec_wp {
+    position: relative;
+    z-index: 4;
+}
+
+.wow {
+    visibility: hidden;
+}
+
+.for_des {
+    display: block !important;
+}
+
+.for_mob {
+    display: none !important;
+}
+
+.for_des_flex {
+    display: flex !important;
+}
+
+.for_mob_flex {
+    display: none !important;
+}
+
+.back_img {
+    @include back_img;
+}
+
+.rounded_img {
+    padding-bottom: 145%;
+    border-radius: $xlg_border_radius;
+    position: relative;
+
+    &.vertical_rounded_img {
+        width: 100%;
+        padding-bottom: 45%;
+        margin: 0;
+    }
+}
+
+.dark_section {
+    background-color: $dark_section_bg;
+    color: $white_color;
+
+    &:after {
+        @include after_before();
+        background: linear-gradient(to right, $white_color 0%, $black_color 80%);
+        opacity: 0.02;
+    }
+
+    .divider {
+        background: rgba($white_color, 0.04);
+    }
+
+    .sec_btn {
+        &:after,
+        &:before {
+            border-color: $white_color;
+        }
+    }
+}
+
+.bottom_gradient_sec {
+    background-image: linear-gradient(
+        to bottom,
+        rgba($black_color, 0) 0%,
+        rgba($primary_color, 0.085) 100%
+    );
+}
+
+.top_gradient_sec {
+    background-image: linear-gradient(
+        to top,
+        rgba($black_color, 0) 0%,
+        rgba($primary_color, 0.085) 100%
+    );
+}
+
+.light_bg_sec {
+    background-color: rgba($primary_color, 0.1);
+}
+
+.bg_pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-mask-image: url("../images/bg-pattern.png");
+    -webkit-mask-position: center;
+    -webkit-mask-size: 38vw;
+    background-color: $silver_color;
+    opacity: 0.035;
+}
+
+.tabbing_list {
+    text-align: right;
+
+    ul {
+        @include list_item(20) {
+            position: relative;
+            text-transform: uppercase;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            letter-spacing: 1px;
+            padding: 14px 0;
+            font-weight: 500;
+            color: currentColor;
+            font-size: 20px;
+            font-family: $title_font;
+            font-weight: 600;
+
+            &:after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 2px;
+                background: rgba($primary_color, 0.5);
+                transform: scaleX(0);
+                transform-origin: right;
+                -webkit-transition: -webkit-transform 0.95s (cubic-bezier(0.23, 1, 0.23, 1));
+                transition: -webkit-transform 0.95s (cubic-bezier(0.23, 1, 0.23, 1));
+                transition: transform 0.95s (cubic-bezier(0.23, 1, 0.23, 1));
+                transition: transform 0.95s (cubic-bezier(0.23, 1, 0.23, 1)),
+                    -webkit-transform 0.95s (cubic-bezier(0.23, 1, 0.23, 1));
+            }
+
+            &:hover,
+            &.is_active {
+                color: $primary_color;
+                opacity: 1;
+                &:after {
+                    transform: scaleX(1);
+                    transform-origin: left;
+                }
+            }
+        }
+    }
+}
+
+.divider {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: rgba($black_color, 0.04);
+}
+
+.container-fluid {
+    padding: 0 var(--container_space);
+}
+
+.sticky_title {
+    position: sticky;
+    top: var(--container_space);
+    max-width: 525px;
+}
+
+.outline_text {
+    color: transparent !important;
+    -webkit-text-stroke: 0.5px #fff;
+}
+
+.spin {
+    animation: spin 45s infinite linear;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/*==========Common CSS End==========*/
+
+/*==========Form CSS==========*/
+
+.form_element {
+    position: relative;
+
+    i {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        pointer-events: none;
+        color: $primary_color;
+    }
+}
+
+.form_input_wp {
+    display: block;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.form_input::-webkit-input-placeholder {
+    color: $input_color;
+}
+
+.form_input::-moz-placeholder {
+    color: $input_color;
+}
+
+.form_input:-ms-input-placeholder {
+    color: $input_color;
+}
+
+.form_input::-ms-input-placeholder {
+    color: $input_color;
+}
+
+.form_input::placeholder {
+    color: $input_color;
+}
+
+select {
+    color: $input_color !important;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    &::-ms-expand {
+        display: none;
+    }
+    option {
+        color: $black_color !important;
+    }
+}
+
+.form_input,
+select {
+    width: 100%;
+    height: 46px;
+    border: 1px solid $black_color;
+    outline: none !important;
+    padding: 0 25px;
+    color: $black_color;
+    background: $white_color;
+    -webkit-appearance: none;
+    border-radius: 6px;
+}
+
+textarea.form-input {
+    height: 192px;
+    resize: none;
+    padding: 18px 30px;
+    display: block;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    width: 1.5em;
+    height: 1.5em;
+    margin: 0;
+    outline: none !important;
+    overflow: hidden;
+    background: $primary_color;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: none;
+    margin-right: 10px;
+    -webkit-appearance: none;
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+}
+
+input[type="radio"] {
+    border-radius: 50%;
+}
+
+input[type="checkbox"]:checked::before {
+    content: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxNCAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMy4wMzAzIDAuOTY5NjdDMTMuMzIzMiAxLjI2MjU2IDEzLjMyMzIgMS43Mzc0NCAxMy4wMzAzIDIuMDMwMzNMNi4wMzAzMyA5LjAzMDMzQzUuNzM3NDQgOS4zMjMyMiA1LjI2MjU2IDkuMzIzMjIgNC45Njk2NyA5LjAzMDMzTDAuOTY5NjcgNS4wMzAzM0MwLjY3Njc3NyA0LjczNzQ0IDAuNjc2Nzc3IDQuMjYyNTYgMC45Njk2NyAzLjk2OTY3QzEuMjYyNTYgMy42NzY3OCAxLjczNzQ0IDMuNjc2NzggMi4wMzAzMyAzLjk2OTY3TDUuNSA3LjQzOTM0TDExLjk2OTcgMC45Njk2N0MxMi4yNjI2IDAuNjc2Nzc3IDEyLjczNzQgMC42NzY3NzcgMTMuMDMwMyAwLjk2OTY3WiIgZmlsbD0iYmxhY2siLz4KPC9zdmc+Cg==");
+    font-size: 12px;
+    padding-top: 2px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    @include flex_center(center, center);
+}
+
+input[type="radio"]:checked::before {
+    @include after_before();
+    border-radius: 50%;
+    background: $primary_color;
+    border: 3px solid $white_color;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    opacity: 1;
+}
+
+/*==========Form CSS End==========*/
+
+/*==========Typography CSS==========*/
+
+p {
+    @include font-size($p_font_sizes);
+    color: $silver_color;
+
+    a {
+        color: inherit;
+        background: 0 0;
+        background-image: linear-gradient($yellow_color, $yellow_color);
+        background-repeat: no-repeat;
+        background-size: 100% 50px;
+        background-position: 0px 17px;
+        position: relative;
+        transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+        &:hover {
+            background-position: 0 0;
+        }
+    }
+
+    &.big_text {
+        @include font-size($big_p_font_size);
+    }
+
+    &.small_text {
+        @include font-size($small_p_font_size);
+    }
+
+    &:empty {
+        display: none;
+    }
+}
+
+a {
+    text-decoration: none !important;
+    outline: none !important;
+    color: $black_color;
+
+    &:hover {
+        color: initial;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 500;
+    font-family: $title_font;
+}
+
+.h1_title,
+.h2_title,
+.h3_title,
+.h4_title,
+.h5_title,
+.h6_title {
+    span {
+        display: block;
+    }
+}
+
+.h1_title {
+    @include font-size($h1_font_sizes);
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 4px;
+    position: relative;
+    color: $black_color;
+
+    .title_img {
+        width: 150px;
+        height: 70px;
+        border-radius: $lg_border_radius;
+        object-fit: cover;
+        object-position: center;
+        box-shadow: $box_shadow;
+        margin: 0 20px;
+        position: relative;
+        top: -18px;
+    }
+
+    .shape {
+        display: inline;
+        position: absolute;
+        top: -30px;
+        left: auto;
+        margin-left: -140px;
+        pointer-events: none;
+    }
+}
+
+.h2_title {
+    @include font-size($h2_font_sizes);
+    text-transform: capitalize;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.sec_head_btn {
+    position: relative;
+    @include flex_center(space-between, unset);
+}
+
+.title_shape {
+    display: inline;
+    background-image: url(../images/title_shape.svg);
+    background-position: left bottom;
+    background-repeat: repeat-x;
+    background-size: 50px;
+    padding-bottom: 5px;
+}
+
+.h3_title {
+    @include font-size($h3_font_sizes);
+}
+
+.h4_title {
+    @include font-size($h4_font_sizes);
+}
+
+.h5_title {
+    font-size: 18px;
+    line-height: 28px;
+}
+
+ul,
+ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.read_more {
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+    padding-bottom: 3px;
+    overflow: hidden;
+    display: inline-block;
+
+    &:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: $primary_color;
+        transform: scaleX(0);
+        transform-origin: right;
+        -webkit-transition: -webkit-transform 0.95s cubic-bezier(0.23, 1, 0.23, 1);
+        transition: -webkit-transform 0.95s cubic-bezier(0.23, 1, 0.23, 1);
+        transition: transform 0.95s cubic-bezier(0.23, 1, 0.23, 1);
+        transition: transform 0.95s cubic-bezier(0.23, 1, 0.23, 1),
+            -webkit-transform 0.95s cubic-bezier(0.23, 1, 0.23, 1);
+        opacity: 0.5;
+    }
+
+    svg {
+        transition: 0.5s;
+    }
+
+    svg + svg {
+        transform: translate(-50px, 40px);
+        position: absolute;
+        top: auto;
+        left: auto;
+    }
+
+    &:hover {
+        &:after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        svg {
+            transform: translate(40px, -50px);
+        }
+
+        svg + svg {
+            transform: translate(-17px, 3px);
+        }
+    }
+}
+
+/*==========Typography CSS End==========*/
+
+/*==========Button CSS==========*/
+
+.sec_btn {
+    padding: 22px 40px;
+    line-height: 1.42857143;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    color: $black_color;
+    position: relative;
+    border: none;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+    z-index: 2;
+    border-radius: 0 !important;
+    outline: none !important;
+    font-weight: 600;
+    transition: 0.4s;
+
+    &:after {
+        content: "";
+        position: absolute;
+        top: 8px;
+        left: 1px;
+        width: 100%;
+        height: 100%;
+        border: 1px solid $black_color;
+        border-radius: 70%;
+        opacity: 0.8;
+        background: transparent;
+        z-index: -2;
+        transform: rotate(1deg);
+        transition: 0.3s;
+    }
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 1px solid $black_color;
+        border-radius: 70%;
+        background-color: $primary_color;
+        z-index: -1;
+        transition: 0.3s;
+    }
+
+    &:hover {
+        color: $white_color;
+
+        &:before {
+            background-color: $dark_section_bg;
+        }
+
+        &:after {
+            top: 0;
+        }
+    }
+
+    &.white-hover-btn {
+        &:before {
+            background: $white_color;
+        }
+
+        &:hover {
+            color: $black_color;
+        }
+    }
+
+    &.white-btn {
+        color: $black_color;
+
+        &:after {
+            background: $white_color;
+        }
+
+        &:before {
+            background: $primary_color;
+        }
+
+        &:hover {
+            color: $white_color;
+        }
+    }
+}
+
+/*==========Button CSS End==========*/
+
+/*==========White text CSS==========*/
+
+.white_text,
+.dark_section {
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    ul li,
+    label,
+    .read_more {
+        color: $white_color;
+    }
+}
+
+.white_list_link a {
+    color: $white_color;
+}
+
+.white_arrow_dots {
+    .slick-dots li button {
+        border-color: $white_color;
+    }
+    .slick-dots li.slick-active button,
+    .slick-dots li button:hover {
+        background: $white_color;
+    }
+
+    .slick-arrow {
+        background: $white_color;
+        color: $black_color;
+    }
+
+    .slick-arrow:hover {
+        background: $black_color;
+        color: $white_color;
+    }
+}
+
+.white_btn {
+    background: $white_color;
+    color: $black_color;
+    border-color: $white_color;
+}
+
+.white_form {
+    .form-input,
+    select {
+        background: transparent;
+        border-color: $white_color;
+        color: $white_color;
+    }
+
+    .form_input::-webkit-input-placeholder {
+        color: $silver_color;
+    }
+
+    .form_input::-moz-placeholder {
+        color: $silver_color;
+    }
+
+    .form_input:-ms-input-placeholder {
+        color: $silver_color;
+    }
+
+    .form_input::-ms-input-placeholder {
+        color: $silver_color;
+    }
+
+    .form_input::placeholder {
+        color: $silver_color;
+    }
+
+    select {
+        color: $silver_color !important;
+    }
+
+    .form-element {
+        i {
+            color: $white_color;
+        }
+    }
+}
+
+/*==========White text CSS End==========*/
+
+/*==========loader CSS==========*/
+
+.loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $black_color;
+    z-index: 99;
+
+    i {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: $white_color;
+    }
+}
+
+/*==========loader CSS End==========*/
+
+/*==========Header CSS==========*/
+
+.site_header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99;
+
+    &:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: radial-gradient(ellipse at center, $silver_color 0%, rgba($body_bg, 0) 45%);
+        opacity: 0.5;
+    }
+
+    .header_menu {
+        @include align_center(center);
+        ul {
+            @include list_item(20) {
+                color: $black_color;
+                font-weight: 500;
+                position: relative;
+                @include flex_center(unset, center);
+                text-transform: uppercase;
+
+                &:before {
+                    $size: 5px;
+                    content: "";
+                    width: $size;
+                    height: $size;
+                    background: $primary_color;
+                    border-radius: 50%;
+                    display: inline-block;
+                    margin-right: 5px;
+                    transition: 0.3s;
+                }
+
+                &:hover,
+                &.active {
+                    color: $primary_color;
+
+                    &:before,
+                    &.active:before {
+                        background: $black_color;
+                    }
+                }
+            }
+        }
+    }
+
+    .header_icon {
+        @include align_center(flex-end);
+        ul {
+            @include list_item();
+            button {
+                background-color: transparent;
+                border: none;
+                padding: 0;
+                color: $black_color;
+                transition: 0.3s;
+
+                &:hover {
+                    color: $primary_color;
+                }
+            }
+        }
+    }
+}
+
+/*==========Header CSS End==========*/
+
+/*==========Main Banner CSS==========*/
+
+.main_banner {
+    @include full_height_sec;
+
+    .banner_text {
+        p {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        @include blur_shape(350, 350, $primary_color, 0.3);
+
+        @include blur_shape2(80%, 80%, 400, 400, $yellow_color, 0.3);
+    }
+
+    .scroll_down {
+        position: absolute;
+        bottom: 40px;
+        right: 40px;
+
+        img {
+            pointer-events: none;
+        }
+
+        svg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: 0.3s;
+            color: $black_color;
+        }
+
+        &:hover {
+            svg {
+                color: $primary_color;
+            }
+        }
+    }
+}
+
+/*==========Main Banner CSS End==========*/
+
+/*==========Inner Banner CSS==========*/
+
+.inner_banner_text {
+    p {
+        max-width: 600px;
+        @include font-size($small_p_font_size);
+        font-weight: 500;
+        color: $dark_color;
+        opacity: 0.8;
+    }
+}
+
+/*==========Inner Banner CSS End==========*/
+
+/*==========About Section CSS==========*/
+
+.about_img {
+    img {
+        position: relative;
+        right: 65%;
+        top: 0;
+        width: 140%;
+        margin-top: -120px;
+        max-width: fit-content;
+        -webkit-filter: drop-shadow(12px 10px 40px rgba(0, 0, 0, 0.06));
+        filter: drop-shadow(12px 10px 40px rgba(0, 0, 0, 0.06));
+    }
+}
+
+.about_shape {
+    img {
+        position: absolute;
+        top: -80%;
+        left: 50%;
+        opacity: 0.2;
+        max-width: 300px;
+    }
+}
+
+/*==========About Section CSS End==========*/
+
+/*==========What We Do Section CSS==========*/
+
+.what_we_do_title_img {
+    height: 70vh;
+    margin-top: 30px;
+    @include back_img;
+}
+
+.what_we_do_box_wp {
+    display: flex;
+
+    &:last-of-type {
+        margin-bottom: 0 !important;
+    }
+
+    .what_we_do_box_num {
+        font-size: 40px;
+        font-family: $title_font;
+        padding-right: 20px;
+        min-width: 75px;
+    }
+}
+
+.what_we_do_box {
+    padding: 38px 30px 30px;
+    border: 1px solid rgba($primary_color, 0.3);
+    position: relative;
+    transition: 0.3s;
+    backdrop-filter: blur(10px);
+    border-radius: 5px;
+
+    .what_we_do_box_icon {
+        display: inline-block;
+        padding: 15px;
+        border-radius: 50%;
+        background: rgba($primary_color, 0.04);
+        border: 1px solid rgba($primary_color, 0.4);
+
+        img {
+            max-width: 40px;
+        }
+    }
+
+    .what_we_do_box_text {
+        h3 {
+            text-transform: capitalize;
+        }
+    }
+
+    &:hover {
+        background-color: rgba($white_color, 0.5);
+    }
+}
+
+/*==========What We Do Section CSS End==========*/
+
+/*==========Project Section CSS==========*/
+
+.project_box_wp {
+    $gap: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+    margin-top: 30px;
+
+    .project_box {
+        display: grid;
+        grid-template-columns: 0.2fr 1fr;
+        align-items: center;
+        column-gap: $gap;
+
+        &:hover {
+            picture {
+                transform: scale(1.2);
+            }
+        }
+
+        picture {
+            min-width: 140px;
+            max-width: 200px;
+            max-height: 100px;
+            border-radius: $md_border_radius;
+            overflow: hidden;
+            filter: brightness(1.1);
+            box-shadow: $box_shadow;
+            transition: 0.3s;
+        }
+
+        .project_box_title {
+            .h2_title {
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                margin-bottom: 0;
+                font-weight: 300;
+                letter-spacing: 2px;
+            }
+        }
+    }
+}
+
+/*==========Project Section CSS End==========*/
+
+/*==========Work Process Section CSS==========*/
+
+.work_process_row {
+    .row {
+        position: relative;
+        $opacity: 0.5;
+        $space: var(--bs-gutter-x);
+        $background: radial-gradient(ellipse at center, $silver_color 0%, $dark_section_bg 90%);
+
+        &:after {
+            content: "";
+            position: absolute;
+            top: calc(50% + ($space / 2));
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: $background;
+            opacity: $opacity;
+            transform: translate(0, -50%);
+        }
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: calc($space / 2);
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background: $background;
+            opacity: $opacity;
+            transform: translate(-50%, 0);
+        }
+    }
+}
+
+.work_process_step {
+    .process_step_title {
+        @include flex_center(unset, center);
+        column-gap: 30px;
+        margin-bottom: 25px;
+
+        .h3_title {
+            margin: 0;
+        }
+
+        span {
+            color: $primary_color;
+            @include font-size($big_p_font_size);
+            border: 2px dotted rgba($primary_color, 0.2);
+            width: 50px;
+            height: 70px;
+            @include flex_center(center, center);
+            border-radius: 100vmax;
+            transition: 0.3s;
+        }
+    }
+
+    &:hover {
+        .process_step_title {
+            span {
+                background-color: $primary_color;
+                color: rgba($white_color, 0.85);
+            }
+        }
+    }
+}
+
+/*==========Work Process Section CSS End==========*/
+
+/*==========our Skill Section CSS==========*/
+
+.skills_progress_bar {
+    @include flex_center(space-between, center);
+
+    .h2_title,
+    .h3_title {
+        margin-bottom: 0;
+        line-height: 1;
+    }
+}
+
+/*==========our Skill Section CSS End==========*/
+
+/*==========Team Section CSS==========*/
+
+.team_sec {
+    overflow: hidden;
+
+    .team_slider {
+        overflow: visible;
+
+        .swiper-wrapper {
+            .swiper-slide {
+                &:nth-child(2n + 2) {
+                    margin-top: 80px;
+                }
+
+                &:hover {
+                    .team_box {
+                        background-blend-mode: normal;
+
+                        &:after {
+                            height: 150%;
+                        }
+
+                        .team_hover {
+                            bottom: 0;
+                            padding-bottom: 40px;
+
+                            .team_social {
+                                opacity: 1;
+                                bottom: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.team_box {
+    padding-bottom: 160%;
+    @include back_img();
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    border-radius: 100vmax;
+    box-shadow: 5px 10px 20px rgb(0 0 0 / 10%);
+    background-blend-mode: luminosity;
+    background-color: #000;
+    transition: 0.3s;
+
+    &:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transition: 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+        background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(181, 181, 181, 0) 40%,
+            rgba(120, 58, 58, 0) 50%,
+            rgba($primary_color, 0.65) 80%
+        );
+        mix-blend-mode: color-burn;
+    }
+    .team_hover {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 2;
+        text-align: center;
+        transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .team_social {
+        margin-top: 15px;
+        opacity: 0;
+        position: relative;
+        bottom: -30px;
+        transition: 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+        ul {
+            li {
+                display: inline-block;
+                margin: 0 10px;
+
+                a {
+                    font-size: 20px;
+                    color: $white_color;
+                    transition: 0.3s;
+
+                    &:hover {
+                        color: $black_color;
+                    }
+                }
+            }
+        }
+    }
+
+    .team_title {
+        .h4_title {
+            text-transform: capitalize;
+        }
+    }
+}
+
+/*==========Team Section CSS End==========*/
+
+/*==========Reviews Section CSS==========*/
+
+.reviews_sec {
+    overflow: hidden;
+
+    .reviews_slider {
+        overflow: visible;
+    }
+}
+
+.reviews_box {
+    border: 1px solid $border_color;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
+    border-radius: 5px;
+
+    p {
+        margin: 0;
+    }
+
+    .reviews_title {
+        @include flex_center(unset, center);
+        column-gap: 20px;
+
+        .reviews_img {
+            min-width: 50px;
+            min-height: 80px;
+            @include back_img;
+            border-radius: 100vmax;
+            box-shadow: $box_shadow;
+        }
+
+        .h5_title {
+            $f_size: 20px;
+            font-family: $title_font;
+            font-size: $f_size;
+            line-height: 1.5;
+            color: $dark_color;
+            font-weight: bold;
+
+            span {
+                opacity: 0.5;
+                font-size: calc($f_size - 3px);
+            }
+        }
+    }
+
+    &:hover {
+        background-color: rgba($white_color, 0.5);
+    }
+}
+/*==========Reviews Section CSS End==========*/
+
+/*==========Blog Section CSS==========*/
+
+.blog_box {
+    .blog_top_bar {
+        @include flex_center(space-between, unset);
+
+        p {
+            margin-bottom: 0;
+            font-size: 16px;
+            line-height: 1;
+            text-transform: capitalize;
+            font-weight: 300;
+        }
+    }
+
+    .blog_img {
+        padding-bottom: 100%;
+        @include back_img;
+        border-radius: 5px;
+        transition: 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    .blog_text {
+        h4 {
+            transition: 0.3s;
+
+            &:hover {
+                color: $primary_color;
+            }
+        }
+        p {
+            margin-bottom: 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            min-height: 84px;
+        }
+    }
+
+    &:hover {
+        .blog_img {
+            transform: scale3d(0.95, 0.9, 0.9);
+        }
+    }
+}
+
+/*==========Blog Section CSS End==========*/
+
+/*==========Get In Touch Section CSS End==========*/
+
+.get_in_touch_box {
+    text-align: center;
+    padding: 60px 60px 80px;
+    border-radius: 5px;
+
+    &:after {
+        display: none;
+    }
+
+    .get_in_touch_text {
+        .h3_title {
+            text-transform: capitalize;
+        }
+
+        p {
+            margin: 0;
+            font-size: 18px;
+            line-height: 30px;
+            color: $white_color;
+        }
+    }
+}
+
+.get_in_touch_form {
+    @include flex_center(space-between, unset);
+    position: relative;
+
+    .form_input {
+        height: 60px;
+        padding-right: 130px;
+    }
+
+    .circle_btn {
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+        right: -30px;
+        background-color: transparent;
+        border: none;
+        mix-blend-mode: difference;
+        color: $white_color;
+
+        svg {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            transition: 0.3s;
+        }
+
+        img {
+            animation: spin 30s infinite linear;
+            animation-play-state: paused;
+        }
+
+        &:hover {
+            img {
+                animation-play-state: running;
+            }
+
+            svg {
+                transform: translate(-50%, -50%) rotate(42deg);
+            }
+        }
+    }
+
+    .sec_btn {
+        margin-left: 10px;
+    }
+}
+/*==========Get In Touch Section CSS End==========*/
+
+/*==========Footer CSS==========*/
+
+.footer_shape {
+    position: absolute;
+    top: 80px;
+    left: -50px;
+    opacity: 0.3;
+
+    img {
+        width: 280px;
+    }
+}
+
+.footer_logo_wp {
+    border: 1px solid $border_color;
+    border-radius: 100vmax;
+    padding: 8% 70px;
+    max-width: 460px;
+    background: rgba($white_color, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.footer_logo {
+    img {
+        width: 280px;
+    }
+}
+
+.footer_about {
+    p {
+        @include font-size($small_p_font_size);
+    }
+}
+
+.footer_social {
+    ul {
+        @include list_item {
+            &:hover {
+                color: $primary_color;
+            }
+        }
+    }
+}
+
+.footer_right {
+    @include flex_center(space-around, unset);
+    flex-direction: column;
+    height: 100%;
+}
+
+.footer_nav {
+    ul {
+        @include flex_center(space-between, unset);
+
+        @include list_item {
+            @include font-size($h5_font_sizes);
+            font-family: $title_font;
+            text-transform: uppercase;
+            font-weight: bold;
+
+            &:hover {
+                color: $primary_color;
+            }
+        }
+    }
+}
+
+.footer_contact {
+    ul {
+        display: flex;
+
+        li {
+            flex: 1;
+
+            &:hover {
+                position: relative;
+                z-index: 2;
+            }
+        }
+
+        @include list_item(-30) {
+            border: 1px solid $border_color;
+            @include flex_center(unset, center);
+            padding: 25px 30px 25px 20px;
+            border-radius: 100vmax;
+            background: rgba($white_color, 0.25);
+            backdrop-filter: blur(2px);
+            column-gap: 25px;
+            color: $dark_color;
+
+            h5 {
+                font-weight: bold;
+                text-transform: uppercase;
+                font-size: 16px;
+            }
+
+            &:hover {
+                color: $primary_color;
+                background: rgba($white_color, 0.8);
+
+                h5 {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+.bottom_footer_text {
+    p {
+        font-size: 16px;
+        line-height: 1;
+    }
+}
+
+.bottom_footer_nav {
+    ul {
+        @include flex_center(flex-end, center);
+        @include list_item {
+            color: $silver_color;
+            text-transform: capitalize;
+
+            &:hover {
+                color: $primary_color;
+            }
+        }
+    }
+}
+/*==========Footer CSS End==========*/
+
+/*==========Error Page CSS==========*/
+
+.error_sec {
+    @include full_height_sec;
+}
+
+.error_sec_text {
+    .h1_title {
+        display: inline-block;
+        font-size: 25vw;
+        letter-spacing: 0.5vw;
+        line-height: 1;
+        position: relative;
+        mix-blend-mode: color-burn;
+        margin: 0;
+
+        span {
+            $size: 50%;
+            @include back_img;
+            border-radius: 100vmax;
+            position: absolute;
+            top: calc($size - 2.5vw);
+            left: calc($size - 0.85vw);
+            transform: translate(-$size, -$size);
+            width: 270px;
+            height: 100%;
+            background-blend-mode: soft-light;
+            box-shadow: 5px 10px 60px rgb(0 0 0 / 6%);
+            z-index: -1;
+            filter: brightness(0.5) invert(0.01);
+        }
+    }
+
+    .h3_title {
+        text-transform: capitalize;
+    }
+}
+
+/*==========Error Page CSS End==========*/
