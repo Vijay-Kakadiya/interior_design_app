@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/the-arc-vantage/static/css/main.fa028420.css",
+    "main.js": "/the-arc-vantage/static/js/main.89df1fb2.js",
+    "static/media/about_img.png": "/the-arc-vantage/static/media/about_img.1e47338ef5ce672380fb.png",
+    "static/media/bg-pattern.png": "/the-arc-vantage/static/media/bg-pattern.919c6cd37411bbe3ecb1.png",
+    "static/media/scroll_img.svg": "/the-arc-vantage/static/media/scroll_img.2f71048ed0016c30e58def5f4283d2c0.svg",
+    "static/media/areminiscentsmile-Regular.eot": "/the-arc-vantage/static/media/areminiscentsmile-Regular.b1c4ed90e6aed55df5c4.eot",
+    "static/media/areminiscentsmile-Thin.eot": "/the-arc-vantage/static/media/areminiscentsmile-Thin.b32620af52857fbe8318.eot",
+    "static/media/areminiscentsmile-Regular.ttf": "/the-arc-vantage/static/media/areminiscentsmile-Regular.fb5c50a7acddb4618be8.ttf",
+    "static/media/circle_form_btn.svg": "/the-arc-vantage/static/media/circle_form_btn.dc7d34250be650effb98b723432c774e.svg",
+    "static/media/areminiscentsmile-Regular.woff": "/the-arc-vantage/static/media/areminiscentsmile-Regular.4effe07b9588490a73a7.woff",
+    "static/media/areminiscentsmile-Thin.woff": "/the-arc-vantage/static/media/areminiscentsmile-Thin.e504971b97aa4d6d6f25.woff",
+    "static/media/logo.svg": "/the-arc-vantage/static/media/logo.5d875f7662c2aaa073bb4e9aa76e97b3.svg",
+    "static/media/areminiscentsmile-Regular.woff2": "/the-arc-vantage/static/media/areminiscentsmile-Regular.c5591b13a2e3e0c30bfa.woff2",
+    "static/media/areminiscentsmile-Thin.woff2": "/the-arc-vantage/static/media/areminiscentsmile-Thin.31dfa3b5ea9ca48228d4.woff2",
+    "static/media/sectors_icon.svg": "/the-arc-vantage/static/media/sectors_icon.9bf8701158daade4c9f306186f13f1b8.svg",
+    "static/media/area_icon.svg": "/the-arc-vantage/static/media/area_icon.46decdd648c579f1301aca617e10d6cb.svg",
+    "static/media/shape.svg": "/the-arc-vantage/static/media/shape.1f28d0918eba7ac30c0c6b3c48e47b09.svg",
+    "static/media/star.svg": "/the-arc-vantage/static/media/star.ab6117755871166b1480e89d9e617fe6.svg",
+    "static/media/range_icon.svg": "/the-arc-vantage/static/media/range_icon.78331bd305ff135aa2e41264916b0b65.svg",
+    "static/media/categories_icon.svg": "/the-arc-vantage/static/media/categories_icon.af264ce176f4f6621bc06f53372d0b09.svg",
+    "index.html": "/the-arc-vantage/index.html",
+    "static/media/title_shape.svg": "/the-arc-vantage/static/media/title_shape.528399ce5e2d50b5f43d.svg",
+    "main.fa028420.css.map": "/the-arc-vantage/static/css/main.fa028420.css.map",
+    "main.89df1fb2.js.map": "/the-arc-vantage/static/js/main.89df1fb2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fa028420.css",
+    "static/js/main.89df1fb2.js"
+  ]
+}
